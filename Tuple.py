@@ -1,12 +1,13 @@
 import random
 
 class DiceGame:
+    #setting beginning high score to 0
     def __init__(self):
         self.high_score = 0
-
+#roll three dice and return their values 
     def roll_dice(self):
         return [random.randint(1, 6) for _ in range(3)]
-
+#first dice roll
     def play_turn(self):
         dice = self.roll_dice()
         print(f"You rolled: {dice}")
@@ -44,10 +45,11 @@ class DiceGame:
         return score
 
     def play_game(self):
+        #starting player turn
         while True:
             print("\nYour turn")
             turn_score = self.play_turn()
-            
+            #checking to see if the player would like to play again
             if turn_score == 0:
                 print(f"Your high score is: {self.high_score}")
                 if input("Do you want to try again? (y/n): ").lower() != 'y':
@@ -55,7 +57,7 @@ class DiceGame:
                     break
                 else:
                     continue
-            
+            #Telling player they have 
             if turn_score > self.high_score:
                 self.high_score = turn_score
                 print(f"Congratulations! You have a new high score: {self.high_score}")
